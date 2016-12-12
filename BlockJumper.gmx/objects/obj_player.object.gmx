@@ -38,6 +38,7 @@ myDir = 1;
 numJumps = 0;
 maxJumps = 1;
 
+isClinging = 0;
 
 </string>
           </argument>
@@ -68,9 +69,33 @@ key_right = keyboard_check(vk_right);
 key_left = -keyboard_check(vk_left);
 key_sprint = keyboard_check(vk_shift);
 key_jump = keyboard_check_pressed(vk_space);
+key_cling = keyboard_check(vk_up);
 
 //React to inputs
 move = key_left + key_right; //Set move to 1, -1, or 0 depending on key inputs
+
+if (place_meeting(x, y-1, obj_stickwall_vrt))
+{
+    isClinging = key_cling;
+}
+
+else if (place_meeting(x+1, y, obj_stickwall_hrz))
+{
+    isClinging = key_right;
+}
+
+else if (place_meeting(x-1, y, obj_stickwall_hrz))
+{
+    isClinging = key_left;
+}
+else if (!place_meeting(x, y-1, obj_stickwall_vrt) 
+&amp;&amp; !place_meeting(x+1, y, obj_stickwall_hrz)
+&amp;&amp; !place_meeting(x-1, y, obj_stickwall_hrz))
+{
+    isClinging = 0;
+}
+
+show_debug_message("Is clinging: " + string(isClinging));
 
 if (!key_sprint)
     hsp = move * movespeed; //Set movement speed to your speed + your direction
@@ -89,9 +114,14 @@ else if (keyboard_check_pressed(vk_left))
 }
 
 //If your vertical speed hasn't exceeded 10, add gravity to it
-if (vsp &lt; 10) 
+if (vsp &lt; 10 &amp;&amp; isClinging == 0) 
 { 
     vsp += grav; 
+}
+
+else if (isClinging == 1)
+{
+    vsp = 0;
 }
 
 //Jump

@@ -4,7 +4,11 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sounds name="Music">
+      <sound>sound\bgm0</sound>
+    </sounds>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_player</sprite>
     <sprite>sprites\spr_wall</sprite>
@@ -12,6 +16,9 @@
     <sprite>sprites\spr_enemy</sprite>
     <sprite>sprites\spr_smartenemy</sprite>
     <sprite>sprites\spr_roomexit</sprite>
+    <sprite>sprites\spr_stickwall_hrz</sprite>
+    <sprite>sprites\spr_spike</sprite>
+    <sprite>sprites\spr_stickwall_vrt</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_sky</background>
@@ -33,6 +40,10 @@
     <object>objects\obj_doorparent</object>
     <object>objects\obj_gamemanager</object>
     <object>objects\obj_door</object>
+    <object>objects\obj_stickwall</object>
+    <object>objects\obj_stickwall_hrz</object>
+    <object>objects\obj_spike</object>
+    <object>objects\obj_stickwall_vrt</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_title</room>
