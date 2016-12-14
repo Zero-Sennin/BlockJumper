@@ -74,19 +74,19 @@ key_cling = keyboard_check(vk_up);
 //React to inputs
 move = key_left + key_right; //Set move to 1, -1, or 0 depending on key inputs
 
-if (place_meeting(x, y-1, obj_stickwall_vrt))
+if (place_meeting(x, y-1, obj_stickwall_hrz))
 {
-    isClinging = key_cling;
+    isClinging = 1;// key_cling;
 }
 
-else if (place_meeting(x+1, y, obj_stickwall_hrz))
+else if (place_meeting(x+1, y, obj_stickwall_vrt))
 {
-    isClinging = key_right;
+    isClinging = 1;//  key_right;
 }
 
-else if (place_meeting(x-1, y, obj_stickwall_hrz))
+else if (place_meeting(x-1, y, obj_stickwall_vrt))
 {
-    isClinging = key_left;
+    isClinging = 1;//  key_left;
 }
 else if (!place_meeting(x, y-1, obj_stickwall_vrt) 
 &amp;&amp; !place_meeting(x+1, y, obj_stickwall_hrz)
@@ -132,6 +132,7 @@ if (place_meeting(x,y+1,obj_floor) || place_meeting(x,y+1,obj_wall)) //Checks if
 
 if (key_jump &amp;&amp; numJumps &gt; 0)
 {
+    audio_play_sound(jump, 0, false);
     numJumps--;
     
     if (!key_sprint || (key_sprint &amp;&amp; (!key_left &amp;&amp; !key_right)))
@@ -144,16 +145,19 @@ if (key_jump &amp;&amp; numJumps &gt; 0)
 //Walljump
 if (key_jump) 
 {
+
     if place_meeting(x+1,y,obj_wall) &amp;&amp; !place_meeting(x,y-1,obj_wall) //&amp;&amp; key_right
     {
         hsp = -1;
         vsp = -jumpspeed;
+        audio_play_sound(jump, 0, false);
     }
 
     if place_meeting(x-1,y,obj_wall) &amp;&amp; !place_meeting(x,y+1,obj_wall) //&amp;&amp; key_left
     {
         hsp = 1;
         vsp = -jumpspeed;
+        audio_play_sound(jump, 0, false);
     }
 }
 
@@ -203,6 +207,8 @@ if ((x &lt; 0 || x &gt; room_width)
     
     {
         score = 0;
+        audio_play_sound(dead, 0, false);
+        //script_execute(restartBGM);
         room_restart();
     }
 </string>

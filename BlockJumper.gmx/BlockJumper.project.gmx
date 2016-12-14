@@ -7,6 +7,14 @@
   <sounds name="sound">
     <sounds name="Music">
       <sound>sound\bgm0</sound>
+      <sound>sound\title</sound>
+      <sound>sound\gameclear</sound>
+    </sounds>
+    <sounds name="SFX">
+      <sound>sound\jump</sound>
+      <sound>sound\coin</sound>
+      <sound>sound\dead</sound>
+      <sound>sound\enemyKO</sound>
     </sounds>
   </sounds>
   <sprites name="sprites">
@@ -19,6 +27,7 @@
     <sprite>sprites\spr_stickwall_hrz</sprite>
     <sprite>sprites\spr_spike</sprite>
     <sprite>sprites\spr_stickwall_vrt</sprite>
+    <sprite>sprites\spr_coin</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_sky</background>
@@ -27,7 +36,7 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\script0.gml</script>
+    <script>scripts\restartBGM.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
@@ -44,6 +53,8 @@
     <object>objects\obj_stickwall_hrz</object>
     <object>objects\obj_spike</object>
     <object>objects\obj_stickwall_vrt</object>
+    <object>objects\obj_collectableparent</object>
+    <object>objects\obj_coin</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_title</room>
